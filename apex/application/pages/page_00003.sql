@@ -1,0 +1,296 @@
+prompt --application/pages/page_00003
+begin
+--   Manifest
+--     PAGE: 00003
+--   Manifest End
+wwv_flow_imp.component_begin (
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.11'
+,p_default_workspace_id=>113953390061129357980
+,p_default_application_id=>256553
+,p_default_id_offset=>113954786364806381749
+,p_default_owner=>'WKSP_RISHI123'
+);
+wwv_flow_imp_page.create_page(
+ p_id=>3
+,p_name=>'AVAILABLE_BUSES'
+,p_alias=>'AVAILABLE-BUSES'
+,p_step_title=>'AVAILABLE_BUSES'
+,p_autocomplete_on_off=>'OFF'
+,p_page_template_options=>'#DEFAULT#'
+,p_protection_level=>'C'
+,p_page_component_map=>'18'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(216128625683614089935)
+,p_plug_name=>'AVAILABLE_BUSES'
+,p_region_template_options=>'#DEFAULT#:t-IRR-region--hideHeader js-addHiddenHeadingRoleDesc'
+,p_plug_template=>2100526641005906379
+,p_plug_display_sequence=>30
+,p_query_type=>'SQL'
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select ID,',
+'       AGENCY,',
+'       SOURCE,',
+'       DESTINATION,',
+'       BUS_TYPE,',
+'       TRAVEL_DATE,',
+'       FARE_PRICE__INR_,',
+'       TOTAL_SEATS,',
+'       DURATION__HOURS_',
+'  from BUS_BOOKING_DETAILS WHERE ( :P3_SOURCE IS NULL OR SOURCE = :P3_SOURCE )',
+'   AND ( :P3_DESTINATION IS NULL OR DESTINATION= :P3_DESTINATION);'))
+,p_plug_source_type=>'NATIVE_IR'
+,p_ajax_items_to_submit=>'P3_SOURCE,P3_DESTINATION'
+,p_prn_page_header=>'AVAILABLE_BUSES'
+);
+wwv_flow_imp_page.create_worksheet(
+ p_id=>wwv_flow_imp.id(216128625765858089935)
+,p_name=>'AVAILABLE_BUSES'
+,p_max_row_count_message=>'The maximum row count for this report is #MAX_ROW_COUNT# rows.  Please apply a filter to reduce the number of records in your query.'
+,p_no_data_found_message=>'No data found.'
+,p_base_pk1=>'ID'
+,p_pagination_type=>'ROWS_X_TO_Y'
+,p_pagination_display_pos=>'BOTTOM_RIGHT'
+,p_report_list_mode=>'TABS'
+,p_lazy_loading=>false
+,p_show_detail_link=>'C'
+,p_show_notify=>'Y'
+,p_download_formats=>'CSV:HTML:XLSX:PDF'
+,p_enable_mail_download=>'Y'
+,p_detail_link=>'f?p=&APP_ID.:4:&APP_SESSION.::&DEBUG.:RP:P4_ID:\#ID#\'
+,p_detail_link_text=>'<span role="img" aria-label="Edit" class="fa fa-edit" title="Edit"></span>'
+,p_owner=>'PAGADALA.RISHIKESH@COGNIZANT.COM'
+,p_internal_uid=>102173839401051708186
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(216128626494014089937)
+,p_db_column_name=>'ID'
+,p_display_order=>10
+,p_is_primary_key=>'Y'
+,p_column_identifier=>'A'
+,p_column_label=>'ID'
+,p_column_type=>'NUMBER'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(216128626897353089937)
+,p_db_column_name=>'AGENCY'
+,p_display_order=>20
+,p_column_identifier=>'B'
+,p_column_label=>'Agency'
+,p_column_link=>'f?p=&APP_ID.:5:&SESSION.::&DEBUG.::P5_BUS_ID,P5_SOURCE,P5_DESTINATION:#ID#,#SOURCE#,#DESTINATION#'
+,p_column_linktext=>'#AGENCY#'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(216128627277814089938)
+,p_db_column_name=>'SOURCE'
+,p_display_order=>40
+,p_column_identifier=>'C'
+,p_column_label=>'Source'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(216128627792447089938)
+,p_db_column_name=>'DESTINATION'
+,p_display_order=>50
+,p_column_identifier=>'D'
+,p_column_label=>'Destination'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(216128628191068089938)
+,p_db_column_name=>'BUS_TYPE'
+,p_display_order=>60
+,p_column_identifier=>'E'
+,p_column_label=>'Bus Type'
+,p_column_type=>'STRING'
+,p_heading_alignment=>'LEFT'
+,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(216128628598947089938)
+,p_db_column_name=>'TRAVEL_DATE'
+,p_display_order=>70
+,p_column_identifier=>'F'
+,p_column_label=>'Travel Date'
+,p_column_type=>'DATE'
+,p_heading_alignment=>'LEFT'
+,p_tz_dependent=>'N'
+,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(216128628977950089939)
+,p_db_column_name=>'FARE_PRICE__INR_'
+,p_display_order=>80
+,p_column_identifier=>'G'
+,p_column_label=>'Fare Price Inr'
+,p_column_type=>'NUMBER'
+,p_heading_alignment=>'RIGHT'
+,p_column_alignment=>'RIGHT'
+,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(216128629440694089939)
+,p_db_column_name=>'TOTAL_SEATS'
+,p_display_order=>90
+,p_column_identifier=>'H'
+,p_column_label=>'Total Seats'
+,p_column_type=>'NUMBER'
+,p_heading_alignment=>'RIGHT'
+,p_column_alignment=>'RIGHT'
+,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(216128629822247089939)
+,p_db_column_name=>'DURATION__HOURS_'
+,p_display_order=>100
+,p_column_identifier=>'I'
+,p_column_label=>'Duration Hours'
+,p_column_type=>'NUMBER'
+,p_heading_alignment=>'RIGHT'
+,p_column_alignment=>'RIGHT'
+,p_use_as_row_header=>'N'
+);
+wwv_flow_imp_page.create_worksheet_rpt(
+ p_id=>wwv_flow_imp.id(216128431359014777588)
+,p_application_user=>'APXWS_DEFAULT'
+,p_report_seq=>10
+,p_report_alias=>'1021736450'
+,p_status=>'PUBLIC'
+,p_is_default=>'Y'
+,p_report_columns=>'ID:AGENCY:SOURCE:DESTINATION:BUS_TYPE:TRAVEL_DATE:FARE_PRICE__INR_:TOTAL_SEATS:DURATION__HOURS_'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(216128631870166089941)
+,p_plug_name=>'Breadcrumb'
+,p_region_template_options=>'#DEFAULT#:t-BreadcrumbRegion--useBreadcrumbTitle'
+,p_component_template_options=>'#DEFAULT#'
+,p_plug_template=>2531463326621247859
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'REGION_POSITION_01'
+,p_menu_id=>wwv_flow_imp.id(216004311340613058765)
+,p_plug_source_type=>'NATIVE_BREADCRUMB'
+,p_menu_template_id=>4072363345357175094
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(216128630338552089940)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_imp.id(216128625683614089935)
+,p_button_name=>'CREATE'
+,p_button_action=>'REDIRECT_PAGE'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>4072362960822175091
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'Create'
+,p_button_position=>'RIGHT_OF_IR_SEARCH_BAR'
+,p_button_redirect_url=>'f?p=&APP_ID.:4:&APP_SESSION.::&DEBUG.:4::'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(215369608105406300758)
+,p_name=>'P3_SOURCE'
+,p_item_sequence=>10
+,p_prompt=>'Source'
+,p_display_as=>'NATIVE_SELECT_LIST'
+,p_named_lov=>'SOURCE'
+,p_lov=>'.'||wwv_flow_imp.id(216130079815790110979)||'.'
+,p_lov_display_null=>'YES'
+,p_cHeight=>1
+,p_field_template=>1609121967514267634
+,p_item_template_options=>'#DEFAULT#'
+,p_lov_display_extra=>'YES'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'page_action_on_selection', 'NONE')).to_clob
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(215369608187851300759)
+,p_name=>'P3_DESTINATION'
+,p_item_sequence=>20
+,p_prompt=>'Destination'
+,p_display_as=>'NATIVE_SELECT_LIST'
+,p_named_lov=>'DESTINATION'
+,p_lov=>'.'||wwv_flow_imp.id(216131346305948118888)||'.'
+,p_lov_display_null=>'YES'
+,p_cHeight=>1
+,p_field_template=>1609121967514267634
+,p_item_template_options=>'#DEFAULT#'
+,p_lov_display_extra=>'YES'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'page_action_on_selection', 'NONE')).to_clob
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(216128630631267089940)
+,p_name=>'Edit Report - Dialog Closed'
+,p_event_sequence=>10
+,p_triggering_element_type=>'REGION'
+,p_triggering_region_id=>wwv_flow_imp.id(216128625683614089935)
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'apexafterclosedialog'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(216128631153339089941)
+,p_event_id=>wwv_flow_imp.id(216128630631267089940)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_REFRESH'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_imp.id(216128625683614089935)
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(215369608280219300760)
+,p_name=>'New'
+,p_event_sequence=>20
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P3_SOURCE'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(215369608382268300761)
+,p_event_id=>wwv_flow_imp.id(215369608280219300760)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_REFRESH'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_imp.id(216128625683614089935)
+,p_attribute_01=>'N'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(215369608480421300762)
+,p_name=>'New_1'
+,p_event_sequence=>30
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P3_DESTINATION'
+,p_condition_element=>'P3_DESTINATION'
+,p_triggering_condition_type=>'NOT_EQUALS'
+,p_triggering_expression=>':P3_SOURCE'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(215369608591240300763)
+,p_event_id=>wwv_flow_imp.id(215369608480421300762)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_REFRESH'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_imp.id(216128625683614089935)
+,p_attribute_01=>'N'
+);
+wwv_flow_imp.component_end;
+end;
+/
